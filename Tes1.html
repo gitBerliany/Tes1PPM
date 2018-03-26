@@ -7,6 +7,7 @@
 	<script src="jmobile/jquery.mobile-1.4.5.js"></script>
 </head>
 <body>
+	<div data-role=page id="home">
 	<div data-role="fieldcontain">
 		<div data-role="header">
 			<h1>Home</h1>
@@ -15,11 +16,129 @@
 		<br>
    		<label for="select-choice-1" class="select">Menu</label>
    		<select name="select-choice-1" id="select-choice-1">
-      	<option value="standard">Calculator</option>
-      	<option value="rush">Color Picker</option>
-      	<option value="express">Ringkasan Materi</option>
-      	</div>
-   </select>
+   		<option value="#home">Choose</option>
+      	<option value="#calc">Calculator</option>
+      	<option value="#color">Color Picker</option>
+      	<option value="#materi">Ringkasan Materi</option>
+   		</select>
+		</div>
+	</div>
+		<script>
+    document.getElementById("select-choice-1").onchange = function() {
+        if (this.selectedIndex!==0) {
+            window.location.href = this.value;
+        }        
+    };
+	</script>
+	</div>
+	
+
+	<div data-role=page id="calc">
+		<div data-role=header data-add-back-btn="true">
+			<h1>Calculator</h1>
+		</div>
+		<form>
+    	 <label for="text-1">Input Decimal:</label>
+    	 <input type="text" name="text-1" id="text-1" value="">
+    	 <button class="ui-btn" data-textonly="false" data-textvisible="true" data-msgtext="" data-inline="true" onclick="myfunction()">Convert</button>
+    	 </form>
+    	 <label for="text-7">Binary:</label>
+    	 <input type="text" name="text-1" id="textt" value="">
+    	 <label for="text-8">Hexadecimal:</label>
+    	 <input type="text" name="text-1" id="texttt" value="">
+		<script>
+		function myfunction() {
+		var hex = document.getElementById("text-1").value.toString(16);
+		var x = document.getElementById("text-1").value;
+		var y = "";
+		while (x > 0) {
+		remainder = x % 2;
+		qoutient = Math.floor(x/2);
+		y = remainder + y;
+		x = qoutient;
+		}
+		document.getElementById("textt").value = y;
+		document.getElementById("texttt").value = hex;
+		}
+		</script>
+		
+	</div>
+
+	<h1 id="h"></h1>
+
+	<div data-role=page id="color">
+		<div data-role=header data-add-back-btn="true">
+			<h1>Color</h1>
+		</div>
+		<form>
+    	 <label for="text-color">Input Color:</label>
+    	 <input type="text" id="text-color" value="">
+    	 <input type="text" id="clr">
+    	 <button class="ui-btn" onclick="ChangeColor()">Convert</button> 
+		</form>
+		<script>
+		function ChangeColor() {
+		var x = document.getElementById("text-color").value;
+		 document.getElementById("clr").style.backgroundColor = x;
+		}
+		</script>
+	</div>
+
+	<div data-role=page id="materi" data-add-back-btn="true">
+		<div data-role=header data-add-back-btn="true">
+			<h1>Materi</h1>
+		</div>
+		<div data-role=content>
+		<ul data-role="listview">
+    	<li><a href="#gitHub">gitHub</a></li>
+    	<li><a href="#jQuery">jQueryMobile</a></li>
+    	<li><a href="#angular">angularJs</a></li>
+		</ul>
+		</div>
+		<form>
+    	<label for="slider-1">Sejauh mana anda menyukai materi ini:</label><br>
+    	<input type="range" name="slider-1" id="slider-1" data-mini="true" min="0" max="100" value="50">
+		</form>
+	</div>
+	<div data-role=page id="gitHub">
+		<div data-role=header data-add-back-btn="true">
+			<h1>gitHub</h1>
+		</div>
+		<p>Github adalah sebuah website yang memberikan pelayanan untuk menyimpan repo anda secara gratis. Banyak perintah yang ada di git bash dan git gui bisa dilakukan melalui Github. Tidak hanya itu, Github juga memudahkan kolaborasi dalam suatu proyek dengan fitur-fitur tambahan seperti pull request, diskusi di patch, mengatur bugs, dan lain-lain.</p>
+	</div>
+
+	<div data-role=page id="jQuery">
+		<div data-role=header data-add-back-btn="true">
+			<h1>jQuery Mobile</h1>
+		</div>
+		<p> JQuery Mobile adalah web framework yang dioptimalkan untuk perangkat-perangkat layar sentuh (touch-optimized). sebagai library, jQuery Mobile yang dikenal sebagai library JavaScript maupun framework mobile ini dikembangkan oleh tim jQuery Project. Tujuan pengembangannya adalah berfokus pada pembuatan framework yang kompatibel dengan beraneka ragam perangkat smartphone dan tablet.</p>
+
+	</div>
+
+	<div data-role=page id="angular">
+			<div class="rwd-example">
+    <div class="ui-block-a">
+        <div class="ui-body ui-body-d">
+            <h2>Apa itu Angular JS</h2>
+            <p>Angular JS bukan berupa libary melainkan framwork yang solid. Sama seperti framwork lainnya. Angular JS memiliki onsep MVC (Model, View, Control) meskipun dengan cara yang berbeda.</p>
+        </div>
+    </div>
+    <div class="ui-block-b">
+        <div class="ui-body ui-body-d">
+            <h4>Mengenalkan browser dengan sintak HTML baru</h4>
+            <p>HTML5 telah menawarkan elemen baru seperti video, audio, canvas dan sebagainya. Dengan Angular JS kita dapat menambah banyak lagi elemen baru yang dimengerti oleh browser seperti draggable yang berfungsi agar elemen bisa di drag, zippy yang membuat akordion, juga sintak bisa dibuat dalam bahasa indonesia seperti <sembunyikan> yang berfungsi jika diklik maka elemen akan disembunyikan.</p>
+        </div>
+    </div>
+    <div class="ui-block-c">
+        <div class="ui-body ui-body-d">
+            <h4>HTML Template</h4>
+            <p>Template yang digunakan Angular JS adalah template HTML biasa dengan penambahan ekspresi. Tidak perlu template yang memiliki engine khusus</p>
+        </div>
+    </div>
 </div>
+		</div>
+
+
+
 </body>
 </html>
